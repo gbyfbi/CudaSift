@@ -54,7 +54,8 @@ include_directories(
 
 SET(CUDA_SEPARABLE_COMPILATION ON)
 
-cuda_add_executable(cudasift ${cuda_sources} ${sources} OPTIONS -arch=sm_35)
+#cuda_add_executable(cudasift ${cuda_sources} ${sources} OPTIONS -arch=sm_35)
+cuda_add_executable(cudasift ${cuda_sources} ${sources} OPTIONS --generate-code arch=compute_35,code=sm_35 --generate-code arch=compute_52,code=sm_52)
 
 set_target_properties(cudasift PROPERTIES
   COMPILE_FLAGS "${EXTRA_CXX_FLAGS}"			   
