@@ -76,3 +76,8 @@ install(FILES
 install(FILES data/left.pgm data/righ.pgm
   DESTINATION data
 )
+
+cuda_add_executable(cudasift_modified ${cuda_sources} mainSift_modified.cpp geomFuncs.cpp OPTIONS --generate-code arch=compute_35,code=sm_35 --generate-code arch=compute_52,code=sm_52)
+target_link_libraries(cudasift_modified
+        /usr/local/cuda/lib64/libcudadevrt.a ${OpenCV_LIBS}
+        )
